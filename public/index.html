@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+
+        //yaha angular ka code aayega 
+        var myApp = angular.module('myApp', []);
+
+        myApp.controller("myController", function ($scope, $http) {
+
+            $scope.objtab = {};
+
+            $scope.Opennew = function () {
+                debugger;
+                location.href = "/dashboard.html";
+                return
+                window.open(`/dashboard.html`)
+                //OnlineOrdersystem
+                $http({
+                    method: 'GET',
+                    url: `/dashbord`,
+                    data: {
+                       
+                    },
+                   // dataType: "json",
+                   // contentType: "application/json;charset=utf-8",
+                }).then(function (response) {
+                    debugger;
+                    $scope.message = response.data
+                   
+                    console.log(response.data);
+                }).catch(function (response) {
+                    debugger;
+                    //alert("Error has Come");
+                    console.log(response.message);
+                })
+
+
+            }
+
+
+
+
+
+
+            $scope.getdata = function () {
+              //  debugger;
+               // $scope.opennew();
+               // return;
+                console.log($scope.objtab);
+                // $http.get('../mydata').then(function mySuccess(response) {
+                //     debugger;
+                //      console.log("successful")
+                //     $scope.myWelcome = response.data;
+                // }, function myError(response) {
+                //     debugger;
+                //     console.log("Error")
+                //     $scope.myWelcome = response.statusText;
+                // })
+
+
+                // $http({
+                //     method: 'GET',
+                //     url: '/mydata'
+                // }).
+                var iid = 1;
+
+
+                $http({
+                    method: 'GET',
+                    url: `/mydata/${iid}`,
+                    data: {
+                        'name': 'rahul',
+                    },
+                    dataType: "json",
+                    // contentType: "application/json;charset=utf-8",
+                }).then(function (response) {
+                    debugger;
+                    //alert("Frontend API has Call Succefull")
+                    console.log(response.data);
+                }).catch(function (response) {
+                    debugger;
+                    //alert("Error has Come");
+                    console.log(response.message);
+                })
+            }
+
+
+
+            $scope.Savedata = function () {
+                debugger;
+                console.log($scope.objtab);
+                var iid = 1;
+                $http({
+                    method: 'POST',
+                    url: `/mydata/saved`,
+                    data: $scope.objtab,
+                    dataType: "json",
+                    // contentType: "application/json;charset=utf-8",
+                }).then(function (response) {
+                    debugger;
+                    //alert("Frontend API has Call Succefull")
+                    console.log(response.data);
+                }).catch(function (response) {
+                    debugger;
+                    //alert("Error has Come");
+                    console.log(response.message);
+                })
+            }
+
+
+            $scope.Username='rahul'
+            $scope.UPassword='123'
+            $scope.Logged = function () {
+                debugger;
+               let nowt = new Date(Date.now)
+               $('#pass').text('Passward')
+               return
+
+                $http({
+                    method: 'GET',
+                    url: `/userid/${$scope.Username}/pasword/${$scope.UPassword}`,
+                    data: $scope.objtab,
+                    dataType: "json",
+                    // contentType: "application/json;charset=utf-8",
+                }).then(function (response) {
+                    debugger;
+                    let res = response.data;
+                    $scope.objtab = res
+                 
+                    //alert("Frontend API has Call Succefull")
+                    console.log(response.data);
+                    alert(res)
+                }).catch(function (response) {
+                    debugger;
+                    //alert("Error has Come");
+                    console.log(response.message);
+                })
+            }
+
+
+
+
+        });
+    </script>
+
+
+    <style>
+        .relative {
+            position: relative;
+
+        }
+
+        .absolute {
+            position: absolute;
+            bottom: 396px;
+            right: 42%;
+            z-index: 1;
+
+        }
+
+        .gradient-custom {
+            /* fallback for old browsers */
+            /* background: #f093fb; */
+            background-image: url("./images/backgroundimage.jpeg");
+
+            /*   
+https://rs.projects-abroad.net/v1/hero/indian-cuisine-south-africa-food-tours-product-5e146c7a97eb2.[1600].jpeg
+  background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+ 
+  background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+   */
+        }
+
+        .card-registration .select-input.form-control[readonly]:not([disabled]) {
+            font-size: 1rem;
+            line-height: 2.15;
+            padding-left: .75em;
+            padding-right: .75em;
+        }
+
+        .card-registration .select-arrow {
+            top: 13px;
+        }
+
+        .form-control-sm {
+            border: solid;
+            font-size: large;
+            border-radius: 1rem;
+
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="myController" class="tab-content">
+        <nav class="navbar navbar-expand-md bg-dark sticky-top navbar-dark">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+            </div>
+            <form class="form-inline my-2 my-lg-0">
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="background-color: khaki;">@</span>
+                    </div>
+                    <input type="text" class="form-control"  ng-model="Username" placeholder="Username">
+                </div>&nbsp;
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="pass" style="background-color: khaki;">PWD</span>
+                    </div>
+                    <input type="password" class="form-control" ng-model="UPassword" placeholder="Password">
+                </div>&nbsp;
+                <button class="btn btn-outline-info my-1 btn-sm" ng-click="Logged()" type="button">Log In</button>
+                <button class="btn btn-outline-info my-1 btn-sm" ng-click="getdata()" type="button">Log In Debug</button>
+
+            </form>
+        </nav>
+
+        <span ng-bind-html="message"></span> 
+
+
+        <section class="vh-100 gradient-custom">
+            <div class="container py-1 h-100  ">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-12 col-lg-9 col-xl-7">
+                        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;opacity: .85;">
+                            <legend align="middle" style="width: auto;"><i class="fa fa-user-circle absolute"
+                                    style="font-size:100px;color:DodgerBlue"></i>
+                            </legend> {{objtab}}
+                            <div class="card-body p-4 p-md-5">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <input type="text" id="firstName" placeholder="First Name"
+                                                    ng-model="objtab.firstName" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <input type="text" id="lastName" placeholder="Last Name"
+                                                    ng-model="objtab.lastName" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <input type="text" id="Username" placeholder="Username"
+                                                    ng-model="objtab.Username" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <input type="password" id="Password" placeholder="Password"
+                                                    ng-model="objtab.pswd" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <input type="password" id="ConfirmPassword"
+                                                    placeholder="Confirm Password" ng-model="objtab.ConfirmPassword"
+                                                    class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 mb-4">
+                                            <strong>Gender: </strong>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="femaleGender" value="option1" checked />
+                                                <label class="form-check-label" for="femaleGender">Female</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="maleGender" value="option2" />
+                                                <label class="form-check-label" for="maleGender">Male</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="otherGender" value="option3" />
+                                                <label class="form-check-label" for="otherGender">Other</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <input type="email" id="emailAddress" placeholder="Email"
+                                                    ng-model="objtab.email" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <input type="tel" id="phoneNumber" placeholder="Phone Number"
+                                                    ng-model="objtab.Phone" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4 pt-2">
+                                        <button type="button" class="btn btn-sm btn-primary" ng-click="Savedata()">Sign
+                                            Up</button>
+                                    </div>
+                                    
+                                    <div class="mt-4 pt-2">
+                                        <button type="button" class="btn btn-sm btn-primary" ng-click="Opennew()">Next Form
+                                            </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- <div id="home" class="tab-pane">
+            <div align="center"><br><br><br>
+                <form id="login">
+                    <fieldset class="scheduler-border">
+                        <legend align="middle" style="width: auto;"><i class="fa fa-user-circle"
+                                style="font-size:100px;color:DodgerBlue"></i>
+                        </legend><br>
+                        <b>User Name:</b><br>
+                        <input type="text" name="name" ng-model="objtab.email"><br>
+                        <b>Password:<b><br>
+                                <input type="password" name="Pwd" ng-model="objtab.password"><br>
+                                <button type="button" ng-click="Loged()">Log In</button>
+                                <button type="button" ng-click="getdata()">Get</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div> -->
+
+</body>
+
+
+</html>

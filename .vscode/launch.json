@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+    
+        {
+            "name": "Attach to Chrome",
+            "port": 3030,
+            "request": "attach",
+            "type": "pwa-chrome",
+            "url": "http://localhost:3030",
+            "webRoot": "${workspaceFolder}/src"
+        },
+        {
+            "name": "Launch Chrome",
+            "request": "launch",
+            "type": "pwa-chrome",
+            "url": "http://localhost:3030",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:3030",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "node-terminal",
+            "name": "Run Script: start",
+            "request": "launch",
+            "command": "npm run start",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
