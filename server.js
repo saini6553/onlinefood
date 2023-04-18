@@ -105,10 +105,10 @@ router.get('/userid/:id/pasword/:password', async (request, response) => {
   console.log(request.params);
   var obj = {};
   // Mam 1 mint bs
-  userdata.get
+  //userdata.get
   var mypromise = await new Promise((resolve, rej) => {
     sqlco.query('SELECT * from Userrole where id = ? and pswd = ? ', [request.params.id, request.params.password], function (err, rows, _fields) {
-      if (err)
+      if (err) 
       rej( err);
       console.log(rows);
       resolve(rows)
@@ -142,7 +142,7 @@ request.session.name=request.params.id
     console.log(`Rahul${tokn}`);
     console.log(obj)
     //res.send(JSON.stringify(obj));
-    response.send(JSON.stringify(tokn));
+    response.status(200).send({token : JSON.stringify(tokn)});
   }
 });
 app.use('/', router)
@@ -175,6 +175,25 @@ app.all('/uploadimage', upload.single('file'), async (req, res) => {
 }catch(err){
 res.status(300).json(err)
 }
+})
+const UhiAuthToken = require('./Service/keyPair') 
+const UhiAuthTokenObj = new UhiAuthToken()
+app.get('/keyPairGenerate',async (req,res)=>{
+  
+  try{
+    const {privateKey} = await UhiAuthTokenObj.keyPairgenerator()
+    res.send(await UhiAuthTokenObj.generateSignature("gergs",privateKey))
+    console.log("========>",private);
+    //uhiAuthToken.generateBlakeHash(private)
+    // let reponsePayload = await uhiAuthToken.generateBlakeHash(uhiAuthToken.getSigningString(new Date(), new Date(), private.privateKey))
+    // console.log(await uhiAuthToken.generateSignature("yjdyd",private.privateKey));
+    
+    // res.send({token : reponsePayload})
+  }
+  catch(err){
+    res.send(err.message)
+  }
+  ////
 })
 
 

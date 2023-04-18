@@ -23,7 +23,7 @@
 
             $scope.Opennew = function () {
                 debugger;
-                location.href = "/dashboard.html";
+                location.href = "../dashboard.html";
                 return
                 window.open(`/dashboard.html`)
                 //OnlineOrdersystem
@@ -153,6 +153,25 @@
 
 
         });
+
+
+        async function checkFetch() {
+                debugger
+                await fetch(`/userid/Saini/pasword/dell`, {
+                    dataType: "json"
+                }).then((response) => response.json())
+                    .then((data) => {
+                        debugger
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+
+
+
+        }
+
     </script>
 
 
@@ -235,7 +254,7 @@ https://rs.projects-abroad.net/v1/hero/indian-cuisine-south-africa-food-tours-pr
                     </div>
                     <input type="password" class="form-control" ng-model="UPassword" placeholder="Password">
                 </div>&nbsp;
-                <button class="btn btn-outline-info my-1 btn-sm" ng-click="Logged()" type="button">Log In</button>
+                <button class="btn btn-outline-info my-1 btn-sm" ng-click="Logged1()"  onclick="checkFetch()" type="button">Log In</button>
                 <button class="btn btn-outline-info my-1 btn-sm" ng-click="getdata()" type="button">Log In Debug</button>
 
             </form>

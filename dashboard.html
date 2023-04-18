@@ -7,138 +7,178 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script>
-    // data-ng-keyup="GetSelectLedger($event)"
-    // $scope.servcodes2 = [];
-    //  $scope.GetSelectLedger = function (event)
-    //            {
-    //                var SCODE = $scope.ObjBank.Payto;
-    //                $http({
-    //                    method: "POST",
-    //                    url: "../WebService/FinanceService.asmx/GetSelectLedger",
-    //                    data: {
-    //                        'Acode': SCODE
-    //                    }
-    //                }).then(function (response)
-    //                {
-    //                    console.log(response);
-    //                    $scope.availableService = [];
-    //                    var responsedata = response.data.d;
-    //                    console.log(responsedata);
-    //                    for (i = 0; i < responsedata.length; i++)
-    //                    {
-    //                        $scope.availableService.push(responsedata[i].Name + "[" + responsedata[i].Code + "]");
-    //                        $scope.servcodes2.push({ "Name": responsedata[i].Name, "Code": responsedata[i].Code });
-    //                        if (i == responsedata.length - 1)
-    //                        {
-    //                            $("#" + event.target.attributes.id.value).autocomplete({
-    //                                source: $scope.availableService
-    //                            });
-   
-    //                        }
-    //                    }
-   
-    //                });
-   
-    //            };
-   
-            </script>
-   
-   
-   
+    <script>
+        // data-ng-keyup="GetSelectLedger($event)"
+        // $scope.servcodes2 = [];
+        //  $scope.GetSelectLedger = function (event)
+        //            {
+        //                var SCODE = $scope.ObjBank.Payto;
+        //                $http({
+        //                    method: "POST",
+        //                    url: "../WebService/FinanceService.asmx/GetSelectLedger",
+        //                    data: {
+        //                        'Acode': SCODE
+        //                    }
+        //                }).then(function (response)
+        //                {
+        //                    console.log(response);
+        //                    $scope.availableService = [];
+        //                    var responsedata = response.data.d;
+        //                    console.log(responsedata);
+        //                    for (i = 0; i < responsedata.length; i++)
+        //                    {
+        //                        $scope.availableService.push(responsedata[i].Name + "[" + responsedata[i].Code + "]");
+        //                        $scope.servcodes2.push({ "Name": responsedata[i].Name, "Code": responsedata[i].Code });
+        //                        if (i == responsedata.length - 1)
+        //                        {
+        //                            $("#" + event.target.attributes.id.value).autocomplete({
+        //                                source: $scope.availableService
+        //                            });
+
+        //                        }
+        //                    }
+
+        //                });
+
+        //            };
+
+
+
+
+        
+
+
+    </script>        
+
+
+
 
 </head>
 
+<script>
+        console.log(document.getElementById("itemrate"));
+
+</script>
 
 <body>
-<div class="row">
-    <div class="col-lg-3  col-sm-3">
-        <div class="input-group">
-            <span class="input-group-addon">Bill no.</span>
-            <input type="text" class="form-control" id="BILL NO" placeholder="Search" ng-model="objtab.patid" name="BILLNO">
-            <div class="input-group-btn">
-                <button class="btn btn-default" type="button">
-                    <i class="glyphicon glyphicon-search"></i>
-                </button>
+    <div class="row">
+        <div class="col-lg-3  col-sm-3">
+            <div class="input-group">
+                <span class="input-group-addon">Bill no.</span>
+                <input type="text" class="form-control" id="BILL NO" placeholder="Search" ng-model="objtab.patid"
+                    name="BILLNO">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary" ng-click="savedata()">Save</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="button" style="left: 10px;" class="btn btn-primary" ng-click="getdata()">Show</button>
-    </div>
-    <div class="container">
-        <form>
-            <div class="panel panel-default">
-                <div class="panel-heading">Patient details</div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3  col-sm-3">
-                            <div class="input-group">
-                                <span class="input-group-addon">Name.</span>
-                                <input type="text" class="form-control" id="name" placeholder="Enter name" ng-model="objtab.patname"
-                                    name="name">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary" ng-click="savedata()">Save</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" style="left: 10px;" class="btn btn-primary" ng-click="getdata()">Show</button>
+        </div>
+        <div class="container">
+            <form>
+                <div class="panel panel-default">
+                    <h3 class="panel-heading">Patient details</h3>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3  col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Name.</span>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter name"
+                                        ng-model="objtab.patname" name="name">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3  col-sm-3">
-                            <div class="input-group">
-                                <span class="input-group-addon">Sex.</span>
-                                <input type="radio" class="form-check-input" name="optradio">Male
-                                <input type="radio" class="form-check-input" name="optradio">Female
+                            <div class="col-lg-3  col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Sex.</span>
+                                    <input type="radio" class="form-check-input" name="optradio">Male
+                                    <input type="radio" class="form-check-input" name="optradio">Female
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3  col-sm-3">
-                            <div class="input-group">
-                                <span class="input-group-addon">MOB.</span>
-                                <input type="number" class="form-control" id="mobile" placeholder="Enter mob" ng-model="objtab.patmob"
-                                    name="mobile">
+                            <div class="col-lg-3  col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">MOB.</span>
+                                    <input type="number" class="form-control" id="mobile" placeholder="Enter mob"
+                                        ng-model="objtab.patmob" name="mobile">
+                                </div>
                             </div>
-                        </div>
 
 
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-3  col-sm-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">Amount.</span>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value=""></label>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-3  col-sm-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Amount.</span>
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value=""></label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="input-group">
-                                    <span class="input-group-addon">item name.</span>
-                                    <input type="number" class="form-control" id="mobile"
-                                        placeholder="Enter mob" name="mobile">
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">item name.</span>
+                                        <input type="number" class="form-control" id="mobile" placeholder="Enter mob"
+                                            name="mobile">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="input-group">
-                                    <span class="input-group-addon">item rate</span>
-                                    <input type="number" class="form-control" id="itemrate"
-                                        placeholder="Enter rate" name="item rate">
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">item rate</span>
+                                        <input type="number" class="form-control" id="itemrate" placeholder="Enter rate"
+                                            name="item rate">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="input-group">
-                                    <span class="input-group-addon">item quantity.</span>
-                                    <input type="number" class="form-control" id="quantity"
-                                        placeholder="Enter quantity" name="qantity">
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">item quantity.</span>
+                                        <input type="number" class="form-control" id="quantity"
+                                            placeholder="Enter quantity" name="qantity">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="input-group">
-                                    <span class="input-group-addon">item quantity.</span>
-                                    <input type="number" class="form-control" id="mobile"
-                                        placeholder="Enter amount" name="mobile">
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">item quantity.</span>
+                                        <input type="number" class="form-control" id="mobile" placeholder="Enter amount"
+                                            name="mobile">
+                                    </div>
                                 </div>
+                                <button class="btn btn-primary" type="button">ADD</button>
                             </div>
-                            <input class="btn btn-primary" type="ADD" value="ADD">
+                    </div>
+                </div>
+
+        </div>
+
+
+
         </form>
+
+        <div id="forSpan">
+            <script> 
+            debugger
+        var div_obj = document.getElementById("forSpan");
+
+        // Add span
+        var span_obj = document.createElement("span");
+
+        // Set attribute for span element, such as id
+        span_obj.setAttribute("id", "span_New");
+        span_obj.innerHTML = "Example three of javascript create element: Add a New Span element";
+
+        span_obj.style.backgroundColor  = "red"
+        span_obj.style.height = "150px"
+div_obj.appendChild(span_obj);
+            </script>
+
+        </div>
 
     </div>
 
 </body>
+
 </html>
